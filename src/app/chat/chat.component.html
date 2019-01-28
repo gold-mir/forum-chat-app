@@ -1,0 +1,9 @@
+<div>
+  <ul>
+    <li *ngFor="let message of messages">{{message}}</li>
+  </ul>
+  <form (ngSubmit)="sendMessage(messageInput.value); chatInput.reset()" #chatInput>
+    <input type="text" placeholder="Message Chat" autofocus #messageInput>
+    <button type="submit">Send</button>
+  </form>
+</div>
