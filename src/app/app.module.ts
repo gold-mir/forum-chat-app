@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing } from './app.routing';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 import { AppComponent } from './app.component';
@@ -9,8 +11,10 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ChatComponent } from './chat/chat.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatService } from './chat.service';
+import { environment } from './../environments/environment';
+import { AuthService } from './auth.service';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {}};
+const config: SocketIoConfig = { url: environment.socketUrl, options: {}};
 
 
 
@@ -24,9 +28,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {}};
     BrowserModule,
     routing,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
     ],
-  providers: [ChatService],
+  providers: [ChatService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
