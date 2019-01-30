@@ -1,0 +1,16 @@
+<h1>Welcome, {{username}}</h1>
+
+<div *ngIf="!user">
+  <input type="text" placeholder="Email" #emailInput>
+  <input type="password" placeholder="password" #passInput>
+
+  <button (click)="signup(emailInput.value, passInput.value)">
+    Signup
+  </button>
+  <button (click)="login(emailInput.value, passInput.value)">
+    Log In
+  </button>
+</div>
+<div *ngIf="user">
+  <button (click)="logout()">Log Out</button>
+</div>

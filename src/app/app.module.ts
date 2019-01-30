@@ -13,6 +13,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ChatService } from './chat.service';
 import { environment } from './../environments/environment';
 import { AuthService } from './auth.service';
+import { AuthComponent } from './auth/auth.component';
 
 const config: SocketIoConfig = { url: environment.socketUrl, options: {}};
 
@@ -22,7 +23,8 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {}};
   declarations: [
     AppComponent,
     MainPageComponent,
-    ChatComponent
+    ChatComponent,
+    AuthComponent
     ],
   imports: [
     BrowserModule,
