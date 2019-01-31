@@ -26,8 +26,8 @@ io.on('connection', (socket) => {
     console.log(`Socket ${socket.id} added.`);
 
     socket.on('chat message', (msg) => {
-        console.log(`Message Received: ${msg}`);
-        io.emit('chat message', `${socket.id}: ${msg}`);
+         console.log(`Message Received: ${msg}`);
+        io.emit('chat message', msg);
     });
 
     socket.on('disconnect', () => {

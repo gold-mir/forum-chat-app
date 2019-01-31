@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from './auth.service';
 
 @Injectable()
-export class ChatService {
+export class ChatService  {
 
   constructor(private socket: Socket) { }
 
-  sendMessage(msg: string){
-    this.socket.emit("chat message", msg);
+  sendMessage(username, message){
+    this.socket.emit("chat message", {user: username, body: message});
   }
 
   onMessage(): Observable<string> {
